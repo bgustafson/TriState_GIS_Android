@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TSGT GIS</string>
+    <string name="lines">TSGT T-Lines</string>
+    <string name="stations">TSGT Stations</string>
+    <string name="titlePrefs">Preferences</string>
+  	<string name="titleSatellite">Satellite</string>
+  	<string name="titleStreets">Street</string>
+  	<string name="titleIdentify">ID Features</string>
+  	<string name="titleFullExtent">Full Extent</string>
+  	<string name="titleSearch">Search</string>
+  	<string name="titleLoc">My Location</string>
+  	<string name="titleDraw">Draw</string>
+  	<string name="titleMeasure">Measure</string>
+  	<string name="spinnerPrompt">Select A Value From The List</string>
+	<string name="processDesc">Populating List</string>
+	<string name="pinDesc">Push Pin</string>
+	<string name="findInMap">Find in Map</string>
+	<string name="legal">GIS data and maps available to Tri-State Generation and Transmission Association Intranet users are provided as general information to aid them in performing their job functions.  No user of Tri-State\'s GIS data and maps may sell any portion of the information provided therein.  Tri-State makes no warranty regarding accuracy or completeness of the data and maps.  Users shall rely only upon proper field verification of Tri-State GIS data.</string>
+  	
+  	<!-- Prefs -->
+    <string name="titleMode">Live Data</string>
+    <string name="summeryMode">Use a live data connection to the TSGT network or cached data.</string>
+    <string name="titleFile">Local Data Location</string>
+    <string name="summeryFile">Sets the location of a local file to use as your offline map.</string>
+</resources>

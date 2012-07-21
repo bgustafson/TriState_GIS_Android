@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+       
+    <!-- ArcGIS Map -->
+	<com.esri.android.map.MapView
+		android:id="@+id/map"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		initExtent = "-1.274213768636875E7 3499505.2532140743 -1.0998589775505995E7 5664273.193113774">
+	</com.esri.android.map.MapView>
+
+		
+	<!-- Measure Results -->
+
+	<LinearLayout android:id="@+id/measurelayout"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginBottom="10dp"
+	    android:layout_marginRight="5dp"
+	    android:background="@drawable/customborder" 
+	    android:alpha="150" android:clickable="true" android:visibility="invisible">
+
+		<TextView
+		    android:id="@+id/measuretextView"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="10dp"
+		    android:layout_marginRight="5dp"
+		    android:paddingLeft="5dp"
+		    android:paddingRight="5dp"
+		    android:paddingTop="5dp"/>
+
+	</LinearLayout>
+	
+</RelativeLayout>

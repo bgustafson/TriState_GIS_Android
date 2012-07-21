@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+        
+    <CheckBoxPreference
+        android:summary="@string/summeryMode" 
+        android:title="@string/titleMode" 
+        android:key="mode"
+        android:defaultValue="true"/>
+    
+    <!-- <EditTextPreference 
+        android:summary="@string/summeryFile" 
+        android:title="@string/titleFile" 
+        android:key="file"
+        android:defaultValue="file:///mnt/sdcard/GIS_Data/v101/Parcel Map"/> -->
+        
+    <ListPreference android:title="Local Data Region"
+    	android:entries="@array/pref_Areas"  
+    	android:key="cache_location" 
+    	android:entryValues="@array/pref_Areas_Values" 
+    	android:summary="Maintinance area to use for your local data cache." 
+    	android:defaultValue="file:///mnt/sdcard/GIS_Data/East" />
+    
+</PreferenceScreen>
