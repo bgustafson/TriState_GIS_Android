@@ -1,17 +1,13 @@
 package org.tristategt.gis;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
 
-public class PrefsActivity extends PreferenceFragment {
+
+public class PrefsActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		PreferenceManager.setDefaultValues(getActivity(),
-                R.xml.prefs, false);
-		
-		addPreferencesFromResource(R.xml.prefs);
+		super.onCreate(savedInstanceState);		  
+		getFragmentManager().beginTransaction().replace(android.R.id.content, new PrefsFragment()).commit();
 	}
 }

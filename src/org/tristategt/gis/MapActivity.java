@@ -223,6 +223,7 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 			case R.id.itemIdentify:
 				Drawable d = item.getIcon();
 				boolean b = d.equals(idOn);
+		
 				
 				Drawable _icon = b ? idOff: idOn;
 				item.setIcon(_icon);
