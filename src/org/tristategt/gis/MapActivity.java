@@ -138,7 +138,7 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 		mMapView.addLayer(bgLayerAerial);
 		mMapView.addLayer(graphicsLayer);
 		mMapView.addLayer(measureGraphicsLayer);
-		
+
 		//if mode is true then load in dynamic layer if mode is false load in local layer
 		if(mode == true){
 			TSGTLayer = new ArcGISDynamicMapServiceLayer(webUri);
