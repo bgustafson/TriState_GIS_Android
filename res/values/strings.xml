@@ -12,6 +12,7 @@
   	<string name="titleLoc">My Location</string>
   	<string name="titleDraw">Draw</string>
   	<string name="titleMeasure">Measure</string>
+  	<string name="titleLegend">Map Legend</string>
   	<string name="spinnerPrompt">Select A Value From The List</string>
 	<string name="processDesc">Populating List</string>
 	<string name="pinDesc">Push Pin</string>

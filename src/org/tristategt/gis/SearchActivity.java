@@ -21,8 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -33,7 +33,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 	Boolean isChecked;
 	String[] outFields; 
 	MySearchTask mSearchTask;
-	Spinner spinner;
+	ListView listView;
 	Graphic selectedLocation;
 	RadioButton rButtonStations;
 	RadioButton rButtonLines;
@@ -47,7 +47,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search);
-		spinner = (Spinner) findViewById(R.id.spinner1);
+		listView = (ListView) findViewById(R.id.listview);
 		rButtonStations = (RadioButton) findViewById(R.id.radioStations);
 		rButtonStations.setOnClickListener(this);
 		rButtonLines = (RadioButton) findViewById(R.id.radioLines);
@@ -61,16 +61,16 @@ public class SearchActivity extends Activity implements OnClickListener {
 		mSearchTask = new MySearchTask();
 		mSearchTask.execute("");
 		
-		//on selection change in the combo box run a query for the selected
+		//on selection change in the list run a query for the selected
 		//feature and then send the result back to the map activity
-		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+		listView.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View v, int arg2, long arg3) {
 				
 				//Need to pass the selected name as a string
 				myFindFeatureTask mTask = new myFindFeatureTask();
-				mTask.execute(spinner.getSelectedItem().toString());
+				mTask.execute(listView.getSelectedItem().toString());
 				
 			}
 
@@ -172,7 +172,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 				Arrays.sort(stringArray);
 				
 				ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, stringArray);
-				spinner.setAdapter(adapter);
+				listView.setAdapter(adapter);
 			}else{
 				Toast.makeText(context, "No results, check that you are connected to the TSGT network.", Toast.LENGTH_LONG).show();
 			}

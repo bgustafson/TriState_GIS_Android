@@ -1,10 +1,13 @@
 package org.tristategt.gis;
 
+import java.io.File;
+
 import org.tristategt.common.GenericMapTouchListener;
 import org.tristategt.common.Dialogs.DrawDialog;
 import org.tristategt.common.Dialogs.MeasureDialog;
 import org.tristategt.common.Draw.DrawTouchListener;
 import org.tristategt.common.Identify.IdentifyListener;
+import org.tristategt.common.Legend.LegendActivity;
 import org.tristategt.common.Measure.MeasureCalcConverter;
 import org.tristategt.common.Measure.MeasureTouchListener;
 
@@ -18,6 +21,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -251,6 +255,11 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 			case R.id.itemMeasure:
 				createMeasureDialog();
 				break;
+			case R.id.legendItems:
+				Intent intent = new Intent(this, LegendActivity.class);
+				intent.putExtra("uri", webUri);
+				startActivity(intent);
+				break;
 		}
 		return true;
 	}
@@ -311,7 +320,7 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 	}
 
 	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {		
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
         mode = prefs.getBoolean("mode", true);
         localUri = prefs.getString("cache_location", "file:///mnt/sdcard/GIS_Data/East");
@@ -333,6 +342,22 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 			Toast.makeText(this, "Web Data Mode", Toast.LENGTH_SHORT).show();
 			
 		}else{
+			
+			File fileBase = new File(Environment.getExternalStorageDirectory() + "/GIS_Data");
+			if(!fileBase.exists()) {
+				fileBase.mkdirs();
+				
+				File fileEast = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/East");
+				fileEast.mkdirs();
+				File fileWest = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/West");
+				fileWest.mkdirs();
+				File fileSouth = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/South");
+				fileSouth.mkdirs();
+				File fileProject = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/Project");
+				fileProject.mkdirs();
+				Toast.makeText(this, "Contact GIS to download local data", Toast.LENGTH_LONG).show();
+				return;
+			}
 			
 			try{mMapView.removeLayer(2);
 				TSGTLayer = new ArcGISLocalTiledLayer(localUri);

@@ -23,6 +23,9 @@
     android:icon="@drawable/ruler" android:showAsAction="ifRoom"></item>
 	
 	<item android:id="@+id/itemMyLocation" android:title="@string/titleLoc"
+    android:icon="@drawable/legend" android:showAsAction="ifRoom"></item>
+	
+	<item android:id="@+id/itemLegend" android:title="@string/titleLegend"
     android:icon="@drawable/user" android:showAsAction="ifRoom"></item>
 	
 	<item android:id="@+id/itemPrefs" android:title="@string/titlePrefs"
