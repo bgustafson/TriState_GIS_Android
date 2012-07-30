@@ -57,25 +57,30 @@
             android:text="@string/processDesc"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </LinearLayout>
-
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/findInMap"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/radioGroup"
-        android:prompt="@string/spinnerPrompt" />
-
+        android:prompt="@string/spinnerPrompt" 
+        android:choiceMode="singleChoice"/>
+
     <ImageButton
         android:id="@+id/findInMap"
-        android:contentDescription="@string/findInMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="false"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="14dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/i_overview" android:clickable="false"/>
+        android:clickable="false"
+        android:contentDescription="@string/findInMap"
+        android:src="@drawable/i_overview" />
 
 </RelativeLayout>

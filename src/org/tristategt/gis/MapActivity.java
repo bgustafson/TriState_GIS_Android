@@ -7,7 +7,6 @@ import org.tristategt.common.Dialogs.DrawDialog;
 import org.tristategt.common.Dialogs.MeasureDialog;
 import org.tristategt.common.Draw.DrawTouchListener;
 import org.tristategt.common.Identify.IdentifyListener;
-import org.tristategt.common.Legend.LegendActivity;
 import org.tristategt.common.Measure.MeasureCalcConverter;
 import org.tristategt.common.Measure.MeasureTouchListener;
 
@@ -51,7 +50,6 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 	private String localUri = "file:///mnt/sdcard/GIS_Data/East";
 	Object init;
 	CharSequence[] units;
-	
 	SharedPreferences prefs;
 	boolean	mode;
 	Menu myMenu;
@@ -227,7 +225,6 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 			case R.id.itemIdentify:
 				Drawable d = item.getIcon();
 				boolean b = d.equals(idOn);
-		
 				
 				Drawable _icon = b ? idOff: idOn;
 				item.setIcon(_icon);
@@ -255,11 +252,18 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 			case R.id.itemMeasure:
 				createMeasureDialog();
 				break;
-			case R.id.legendItems:
-				Intent intent = new Intent(this, LegendActivity.class);
-				intent.putExtra("uri", webUri);
+			/*case R.id.itemLegend:
+				ArcGISLayerInfo[] layerInfos = ((ArcGISDynamicMapServiceLayer) TSGTLayer).getAllLayers();
+				ArrayList<ArcGISLayerInfo> list = new ArrayList<ArcGISLayerInfo>();
+				for(ArcGISLayerInfo info : layerInfos)
+				{
+					list.add(info);
+				}
+				
+				Intent intent = new Intent(this, LegendActivity.class); 
+				intent.putExtra("uri", list);
 				startActivity(intent);
-				break;
+				break;*/
 		}
 		return true;
 	}
@@ -342,22 +346,7 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 			Toast.makeText(this, "Web Data Mode", Toast.LENGTH_SHORT).show();
 			
 		}else{
-			
-			File fileBase = new File(Environment.getExternalStorageDirectory() + "/GIS_Data");
-			if(!fileBase.exists()) {
-				fileBase.mkdirs();
-				
-				File fileEast = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/East");
-				fileEast.mkdirs();
-				File fileWest = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/West");
-				fileWest.mkdirs();
-				File fileSouth = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/South");
-				fileSouth.mkdirs();
-				File fileProject = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/Project");
-				fileProject.mkdirs();
-				Toast.makeText(this, "Contact GIS to download local data", Toast.LENGTH_LONG).show();
-				return;
-			}
+			createRequiredDirs();
 			
 			try{mMapView.removeLayer(2);
 				TSGTLayer = new ArcGISLocalTiledLayer(localUri);
@@ -380,6 +369,23 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
         		editor.commit();
 				Toast.makeText(this, "Failed to open local layer\nContact GIS to get cache.", Toast.LENGTH_SHORT).show();
 			}
+		}
+	}
+
+	public void createRequiredDirs()
+	{
+		File fileBase = new File(Environment.getExternalStorageDirectory() + "/GIS_Data");
+		if(!fileBase.exists()) {
+			fileBase.mkdirs();
+			
+			File fileEast = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/East");
+			fileEast.mkdirs();
+			File fileWest = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/West");
+			fileWest.mkdirs();
+			File fileSouth = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/South");
+			fileSouth.mkdirs();
+			File fileProject = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/Project");
+			fileProject.mkdirs();
 		}
 	}
 }

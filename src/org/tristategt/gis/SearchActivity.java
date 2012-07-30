@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -25,7 +26,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
+
 
 public class SearchActivity extends Activity implements OnClickListener {
 	
@@ -55,6 +56,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 		iButton = (ImageButton) findViewById(R.id.findInMap);
 		iButton.setOnClickListener(this);
 		iButton.setClickable(false);
+		iButton.setAlpha(50);
 		tv = (TextView)findViewById(R.id.textView1);
 		context = this;
 		
@@ -63,22 +65,18 @@ public class SearchActivity extends Activity implements OnClickListener {
 		
 		//on selection change in the list run a query for the selected
 		//feature and then send the result back to the map activity
-		listView.setOnItemSelectedListener(new OnItemSelectedListener() {
-
+		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemSelected(AdapterView<?> arg0, View v, int arg2, long arg3) {
-				
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				//Need to pass the selected name as a string
+				iButton.setClickable(false);
+				iButton.setAlpha(50);
 				myFindFeatureTask mTask = new myFindFeatureTask();
-				mTask.execute(listView.getSelectedItem().toString());
-				
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				selectedLocation =  null;
+				String selectedFromList = (String)(listView.getItemAtPosition(arg2));
+				mTask.execute(selectedFromList);	
 			}
 		});
+			
 	}
 	
 	@Override 
@@ -218,6 +216,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 						
 			if(results != null){
 				iButton.setClickable(true);
+				iButton.setAlpha(1000);
 				Graphic[] graphics = results.getGraphics();
 									
 				for(Graphic g : graphics){
@@ -237,6 +236,9 @@ public class SearchActivity extends Activity implements OnClickListener {
 		int buttonId = v.getId();
 		LinearLayout layout = (LinearLayout) findViewById(R.id.processingProgress);
 		mSearchTask = new MySearchTask();
+		
+		iButton.setClickable(false);
+		iButton.setAlpha(50);
 		
 		switch(buttonId){
 			case R.id.radioStations:
