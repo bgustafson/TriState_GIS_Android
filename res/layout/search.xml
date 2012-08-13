@@ -67,7 +67,7 @@
         android:layout_below="@+id/radioGroup"
         android:prompt="@string/spinnerPrompt" 
         android:choiceMode="singleChoice"/>
-
+
     <ImageButton
         android:id="@+id/findInMap"
         android:layout_width="wrap_content"
@@ -82,5 +82,12 @@
         android:clickable="false"
         android:contentDescription="@string/findInMap"
         android:src="@drawable/i_overview" />
+
+    <TextView
+        android:id="@+id/selectedfeature_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/findInMap"
+        android:layout_toRightOf="@+id/radioButtons"/>
 
 </RelativeLayout>

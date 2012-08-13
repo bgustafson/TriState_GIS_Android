@@ -39,7 +39,8 @@ public class SearchActivity extends Activity implements OnClickListener {
 	RadioButton rButtonStations;
 	RadioButton rButtonLines;
 	ImageButton iButton;
-	TextView tv;
+	TextView tv, tvSelected;
+	String selectedFromList;
 	
 	private static final String webUri = "http://geowebd.tristategt.org/ArcGIS/rest/services/Android/MapServer";
 	int layerID;
@@ -58,6 +59,8 @@ public class SearchActivity extends Activity implements OnClickListener {
 		iButton.setClickable(false);
 		iButton.setAlpha(50);
 		tv = (TextView)findViewById(R.id.textView1);
+		tvSelected = (TextView)findViewById(R.id.selectedfeature_tv);
+		tvSelected.setText("");
 		context = this;
 		
 		mSearchTask = new MySearchTask();
@@ -71,8 +74,9 @@ public class SearchActivity extends Activity implements OnClickListener {
 				//Need to pass the selected name as a string
 				iButton.setClickable(false);
 				iButton.setAlpha(50);
+				tvSelected.setText("");
 				myFindFeatureTask mTask = new myFindFeatureTask();
-				String selectedFromList = (String)(listView.getItemAtPosition(arg2));
+				selectedFromList = (String)(listView.getItemAtPosition(arg2));
 				mTask.execute(selectedFromList);	
 			}
 		});
@@ -222,6 +226,8 @@ public class SearchActivity extends Activity implements OnClickListener {
 				for(Graphic g : graphics){
 					selectedLocation = g;
 				}
+				
+				tvSelected.setText("Click globe to zoom too: " + selectedFromList);
 			}else{
 				Toast.makeText(context, "No Results", Toast.LENGTH_LONG).show();
 			}
@@ -239,6 +245,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 		
 		iButton.setClickable(false);
 		iButton.setAlpha(50);
+		tvSelected.setText("");
 		
 		switch(buttonId){
 			case R.id.radioStations:
