@@ -76,6 +76,7 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
         
         idOn = getResources().getDrawable(R.drawable.id_on);
 		idOff = getResources().getDrawable(R.drawable.id_off);
+		createRequiredDirs();
                                  
         LinearLayout layout = (LinearLayout) findViewById(R.id.measurelayout);
         final TextView mTextView = (TextView) findViewById(R.id.measuretextView);
@@ -345,9 +346,7 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 						
 			Toast.makeText(this, "Web Data Mode", Toast.LENGTH_SHORT).show();
 			
-		}else{
-			createRequiredDirs();
-			
+		}else{		
 			try{mMapView.removeLayer(2);
 				TSGTLayer = new ArcGISLocalTiledLayer(localUri);
 				mMapView.addLayer(TSGTLayer, 2);
@@ -374,18 +373,34 @@ public class MapActivity extends Activity implements OnSharedPreferenceChangeLis
 
 	public void createRequiredDirs()
 	{
-		File fileBase = new File(Environment.getExternalStorageDirectory() + "/GIS_Data");
-		if(!fileBase.exists()) {
-			fileBase.mkdirs();
+		if (Environment.getExternalStorageState() == null) {
+			File fileBase = new File(Environment.getDataDirectory() + "/GIS_Data");
+			if(!fileBase.exists()){
+				fileBase.mkdirs();
+				
+				File fileEast = new File(Environment.getDataDirectory() + "/GIS_Data/East");
+				fileEast.mkdirs();
+				File fileWest = new File(Environment.getDataDirectory() + "/GIS_Data/West");
+				fileWest.mkdirs();
+				File fileSouth = new File(Environment.getDataDirectory() + "/GIS_Data/South");
+				fileSouth.mkdirs();
+				File fileProject = new File(Environment.getDataDirectory() + "/GIS_Data/Project");
+				fileProject.mkdirs();
+			}
+		}else if(Environment.getExternalStorageState() != null){	
+			File fileBase = new File(Environment.getExternalStorageDirectory() + "/GIS_Data");
+			if(!fileBase.exists()) {
+				fileBase.mkdirs();
 			
-			File fileEast = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/East");
-			fileEast.mkdirs();
-			File fileWest = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/West");
-			fileWest.mkdirs();
-			File fileSouth = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/South");
-			fileSouth.mkdirs();
-			File fileProject = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/Project");
-			fileProject.mkdirs();
+				File fileEast = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/East");
+				fileEast.mkdirs();
+				File fileWest = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/West");
+				fileWest.mkdirs();
+				File fileSouth = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/South");
+				fileSouth.mkdirs();
+				File fileProject = new File(Environment.getExternalStorageDirectory() + "/GIS_Data/Project");
+				fileProject.mkdirs();
+			}
 		}
 	}
 }
