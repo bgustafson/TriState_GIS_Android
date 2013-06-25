@@ -7,10 +7,10 @@
         <item>Project</item>
     </string-array>
     <string-array name="pref_Areas_Values">       
-        <item>file:///mnt/sdcard/GIS_Data/East</item>
-        <item>file:///mnt/sdcard/GIS_Data/West</item>
-        <item>file:///mnt/sdcard/GIS_Data/South</item>
-        <item>file:///mnt/sdcard/GIS_Data/Project</item>
+        <item>East</item>
+        <item>West</item>
+        <item>South</item>
+        <item>Project</item>
     </string-array>
     
 </resources>

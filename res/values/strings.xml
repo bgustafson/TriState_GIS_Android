@@ -13,15 +13,32 @@
   	<string name="titleDraw">Draw</string>
   	<string name="titleMeasure">Measure</string>
   	<string name="titleLegend">Map Legend</string>
+  	<string name="titleCompass">Compass</string>
+  	<string name="titleCamera">Camera</string>
+  	<string name="titleMaps">Google Maps</string>
+  	<string name="titleArcGISOnline">AGS Online Maps</string>
   	<string name="spinnerPrompt">Select A Value From The List</string>
 	<string name="processDesc">Populating List</string>
 	<string name="pinDesc">Push Pin</string>
 	<string name="findInMap">Find in Map</string>
 	<string name="legal">GIS data and maps available to Tri-State Generation and Transmission Association Intranet users are provided as general information to aid them in performing their job functions.  No user of Tri-State\'s GIS data and maps may sell any portion of the information provided therein.  Tri-State makes no warranty regarding accuracy or completeness of the data and maps.  Users shall rely only upon proper field verification of Tri-State GIS data.</string>
-  	
+  	<string name="waiting">Waiting...</string>
+    <string name="address">Waiting For Address...</string>
+    
+    <!-- Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+	
+	
   	<!-- Prefs -->
     <string name="titleMode">Live Data</string>
     <string name="summeryMode">Use a live data connection to the TSGT network or cached data.</string>
     <string name="titleFile">Local Data Location</string>
     <string name="summeryFile">Sets the location of a local file to use as your offline map.</string>
+    <string name="titleFileLoc">SD Card</string>
+    <string name="summeryFileLoc">look for cached data on your SD card if checked, internal storage if unchecked.</string>
+    <string name="titleUsername">Username</string>
+  	<string name="summeryUsername">Enter your ArcGIS Online username</string>
+  	<string name="password">Password</string>
+  	<string name="summeryPassword">Enter your ArcGIS Online password</string>
 </resources>

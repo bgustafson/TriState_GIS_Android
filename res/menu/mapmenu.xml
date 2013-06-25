@@ -7,26 +7,38 @@
 	<item android:id="@+id/itemStreets" android:title="@string/titleStreets"
     android:icon="@drawable/i_highway" android:showAsAction="ifRoom"></item>
 	
-	<item android:id="@+id/itemIdentify" android:title="@string/titleIdentify"
-    android:icon="@drawable/id_off" android:showAsAction="ifRoom"></item>
-	
-	<item android:id="@+id/itemFullExtent" android:title="@string/titleFullExtent"
-    android:icon="@drawable/i_overview" android:showAsAction="ifRoom"></item>
-	
 	<item android:id="@+id/itemSearch" android:title="@string/titleSearch"
     android:icon="@drawable/binoculars" android:showAsAction="ifRoom"></item>
-        
-	<item android:id="@+id/itemDraw" android:title="@string/titleDraw"
-    android:icon="@drawable/draw" android:showAsAction="ifRoom"></item>
+	
+	<item android:id="@+id/itemIdentify" android:title="@string/titleIdentify"
+    android:icon="@drawable/id_off" android:showAsAction="ifRoom"></item>
 
 	<item android:id="@+id/itemMeasure" android:title="@string/titleMeasure"
     android:icon="@drawable/ruler" android:showAsAction="ifRoom"></item>
 	
 	<item android:id="@+id/itemMyLocation" android:title="@string/titleLoc"
-    android:icon="@drawable/legend" android:showAsAction="ifRoom"></item>
+    android:icon="@drawable/user" android:showAsAction="ifRoom"></item>
 	
-	<!--  <item android:id="@+id/itemLegend" android:title="@string/titleLegend"
-    android:icon="@drawable/user" android:showAsAction="ifRoom"></item> -->
+	<item android:id="@+id/itemCompass" android:title="@string/titleCompass"
+    android:icon="@drawable/compass" android:showAsAction="ifRoom"></item>
+		
+	<item android:id="@+id/itemFullExtent" android:title="@string/titleFullExtent"
+    android:icon="@drawable/i_overview" android:showAsAction="ifRoom"></item>
+	
+	<item android:id="@+id/itemDraw" android:title="@string/titleDraw"
+    android:icon="@drawable/draw" android:showAsAction="ifRoom"></item>
+	
+	<item android:id="@+id/itemCamera" android:title="@string/titleCamera"
+    android:icon="@drawable/camera" android:showAsAction="ifRoom"></item> 
+    
+	<item android:id="@+id/itemGoogleMaps" android:title="@string/titleMaps"
+    android:icon="@drawable/googlemaps" android:showAsAction="never"></item> 
+	
+	<item android:id="@+id/itemLegend" android:title="@string/titleLegend"
+    android:icon="@drawable/user" android:showAsAction="ifRoom"></item> 
+    
+	<!--<item android:id="@+id/itemAGSOnline" android:title="@string/titleArcGISOnline"
+     android:showAsAction="never"></item> -->
 	
 	<item android:id="@+id/itemPrefs" android:title="@string/titlePrefs"
     android:icon="@android:drawable/ic_menu_preferences" android:showAsAction="ifRoom"></item>

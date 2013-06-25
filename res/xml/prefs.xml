@@ -6,18 +6,35 @@
         android:title="@string/titleMode" 
         android:key="mode"
         android:defaultValue="true"/>
-    
-    <!-- <EditTextPreference 
-        android:summary="@string/summeryFile" 
-        android:title="@string/titleFile" 
-        android:key="file"
-        android:defaultValue="file:///mnt/sdcard/GIS_Data/v101/Parcel Map"/> -->
-        
+            
     <ListPreference android:title="Local Data Region"
     	android:entries="@array/pref_Areas"  
     	android:key="cache_location" 
     	android:entryValues="@array/pref_Areas_Values" 
     	android:summary="Maintinance area to use for your local data cache." 
-    	android:defaultValue="file:///mnt/sdcard/GIS_Data/East" />
+    	android:defaultValue="East" />
+    
+    <CheckBoxPreference
+        android:summary="@string/summeryFileLoc" 
+        android:title="@string/titleFileLoc" 
+        android:key="StorageLocation"
+        android:defaultValue="true"/>
+    
+    <EditTextPreference
+        android:summary="@string/summeryFile" 
+        android:title="@string/titleFile" 
+        android:enabled="true"
+        android:key="cachelocation"/>
+    
+    <EditTextPreference 
+        android:summary="@string/summeryUsername" 
+        android:title="@string/titleUsername" 
+        android:key="username"/>
+    
+    <EditTextPreference 
+        android:title="@string/password" 
+        android:key="password" 
+        android:summary="@string/summeryPassword" 
+        android:password="true"/>
     
 </PreferenceScreen>

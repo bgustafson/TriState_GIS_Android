@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,10 +40,10 @@ public class SearchActivity extends Activity implements OnClickListener {
 	RadioButton rButtonStations;
 	RadioButton rButtonLines;
 	ImageButton iButton;
-	TextView tv, tvSelected;
+	TextView tv;//, tvSelected;
 	String selectedFromList;
 	
-	private static final String webUri = "http://geowebd.tristategt.org/ArcGIS/rest/services/Android/MapServer";
+	private static final String webUri = "http://geowebp.tristategt.org/ArcGIS/rest/services/Android/MapServer";
 	int layerID;
 	
 	@Override
@@ -59,8 +60,8 @@ public class SearchActivity extends Activity implements OnClickListener {
 		iButton.setClickable(false);
 		iButton.setAlpha(50);
 		tv = (TextView)findViewById(R.id.textView1);
-		tvSelected = (TextView)findViewById(R.id.selectedfeature_tv);
-		tvSelected.setText("");
+		//tvSelected = (TextView)findViewById(R.id.selectedfeature_tv);
+		//tvSelected.setText("");
 		context = this;
 		
 		mSearchTask = new MySearchTask();
@@ -74,7 +75,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 				//Need to pass the selected name as a string
 				iButton.setClickable(false);
 				iButton.setAlpha(50);
-				tvSelected.setText("");
+				//tvSelected.setText("");
 				myFindFeatureTask mTask = new myFindFeatureTask();
 				selectedFromList = (String)(listView.getItemAtPosition(arg2));
 				mTask.execute(selectedFromList);	
@@ -131,7 +132,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 			tv.setText("Populating List");
 			RadioButton mRadioButton = (RadioButton) findViewById(R.id.radioStations);
 			isChecked = mRadioButton.isChecked();
-			outFields = isChecked ? new String[] {"LOCATION"} : new String[] {"LINEDESCRIPTION"};
+			outFields = isChecked ? new String[] {"LOCATION"} : new String[] {"GISUSER.Trans_LineSegments.LINEDESCRIPTION"};
 			layerID = isChecked ? 3 : 5;
 
 			query = new Query();
@@ -227,7 +228,10 @@ public class SearchActivity extends Activity implements OnClickListener {
 					selectedLocation = g;
 				}
 				
-				tvSelected.setText("Click globe to zoom too: " + selectedFromList);
+				Toast toast = Toast.makeText(context, "Click globe to zoom to: " + selectedFromList, Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER|Gravity.CENTER_HORIZONTAL, 0, 0);
+				toast.show();
+				//tvSelected.setText("Click globe to zoom to: " + selectedFromList);
 			}else{
 				Toast.makeText(context, "No Results", Toast.LENGTH_LONG).show();
 			}
@@ -245,7 +249,7 @@ public class SearchActivity extends Activity implements OnClickListener {
 		
 		iButton.setClickable(false);
 		iButton.setAlpha(50);
-		tvSelected.setText("");
+		//tvSelected.setText("");
 		
 		switch(buttonId){
 			case R.id.radioStations:
